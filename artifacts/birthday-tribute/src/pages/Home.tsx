@@ -8,6 +8,9 @@ import photo3 from "@assets/HIWpvbFW8AAdnzH_1779117820794.jpg";
 import photo4 from "@assets/1000030172_1779117820795.jpg";
 import photo5 from "@assets/_jqD9Xg-.jpg_small_1779117820796.jpg";
 import photo6 from "@assets/coZ0c-xC.jpg_small_1779117820798.jpg";
+import photo7 from "@assets/30751209954848170_1779118194288.jpg";
+import photo8 from "@assets/274438171039763407_1779118194289.jpg";
+import photo9 from "@assets/37576978138298042_1779118194290.jpg";
 
 const Particles = () => {
   const [mounted, setMounted] = useState(false);
@@ -29,23 +32,21 @@ const Particles = () => {
 };
 
 const wishes = [
-  { text: "Your journey inspires us every day. Happy Birthday to our shining star.", from: "A fan from Thailand" },
-  { text: "From the water to the stage, your passion is undeniable. Wishing you the best.", from: "Anonymous" },
-  { text: "May your year be as deep and beautiful as the ocean.", from: "Anonymous" },
-  { text: "We are so proud of the artist you have become. Keep shining.", from: "Anonymous" },
-  { text: "Your light guides us through the dark. Happy birthday.", from: "Anonymous" },
-  { text: "Like the tide, your talent is a force of nature. We love you.", from: "A fan from overseas" },
-  { text: "Wishing you an ocean of happiness on your special day.", from: "Anonymous" },
-  { text: "Keep breaking records, keep breaking hearts. Happy birthday.", from: "Anonymous" },
+  "Your journey inspires us every day. Happy Birthday to our shining star.",
+  "From the water to the stage, your passion is undeniable. Wishing you the best.",
+  "May your year be as deep and beautiful as the ocean.",
+  "We are so proud of the artist you have become. Keep shining.",
+  "Your light guides us through the dark. Happy birthday.",
+  "Like the tide, your talent is a force of nature. We love you.",
+  "Wishing you an ocean of happiness on your special day.",
+  "Keep breaking records, keep breaking hearts. Happy birthday.",
 ];
 
 const gallery = [
-  { src: photo1, caption: "That smile" },
-  { src: photo6, caption: "By the water" },
+  { src: photo3, caption: "Quiet moment" },
   { src: photo4, caption: "Fan sign" },
   { src: photo5, caption: "Under the sky" },
-  { src: photo3, caption: "Quiet moment" },
-  { src: photo2, caption: "The shore" },
+  { src: photo6, caption: "By the water" },
 ];
 
 function BirthdayCard() {
@@ -94,7 +95,7 @@ function BirthdayCard() {
         {/* Photo */}
         <div className="relative w-full aspect-[4/3] overflow-hidden">
           <img
-            src={photo6}
+            src={photo1}
             alt="Est Supha"
             className="w-full h-full object-cover object-top"
             style={{ filter: "brightness(0.75) saturate(1.1)" }}
@@ -258,7 +259,7 @@ export default function Home() {
               >
                 <div className="aspect-[3/4] rounded-2xl overflow-hidden glass-card p-3 relative transform transition-transform duration-700 group-hover:scale-[1.02]">
                   <div className="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700 z-10 mix-blend-overlay" />
-                  <img src={photo6} alt="By the water" className="w-full h-full object-cover object-center rounded-xl grayscale-[0.2] group-hover:grayscale-0 transition-all duration-700" />
+                  <img src={photo7} alt="By the water" className="w-full h-full object-cover object-center rounded-xl grayscale-[0.2] group-hover:grayscale-0 transition-all duration-700" />
                 </div>
               </motion.div>
               <motion.div
@@ -286,7 +287,7 @@ export default function Home() {
               >
                 <div className="aspect-[3/4] rounded-2xl overflow-hidden glass-card p-3 relative transform transition-transform duration-700 group-hover:scale-[1.02]">
                   <div className="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700 z-10 mix-blend-overlay" />
-                  <img src={photo5} alt="Dream chaser" className="w-full h-full object-cover object-top rounded-xl grayscale-[0.2] group-hover:grayscale-0 transition-all duration-700" />
+                  <img src={photo8} alt="Dream chaser" className="w-full h-full object-cover object-top rounded-xl grayscale-[0.2] group-hover:grayscale-0 transition-all duration-700" />
                 </div>
               </motion.div>
               <motion.div
@@ -314,7 +315,7 @@ export default function Home() {
               >
                 <div className="aspect-[3/4] rounded-2xl overflow-hidden glass-card p-3 relative transform transition-transform duration-700 group-hover:scale-[1.02]">
                   <div className="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700 z-10 mix-blend-overlay" />
-                  <img src={photo1} alt="Winning hearts" className="w-full h-full object-cover object-top rounded-xl grayscale-[0.2] group-hover:grayscale-0 transition-all duration-700" />
+                  <img src={photo9} alt="Winning hearts" className="w-full h-full object-cover object-top rounded-xl grayscale-[0.2] group-hover:grayscale-0 transition-all duration-700" />
                 </div>
               </motion.div>
               <motion.div
@@ -406,13 +407,9 @@ export default function Home() {
               >
                 <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 <div className="absolute -inset-2 bg-primary/5 opacity-0 group-hover:opacity-100 blur-2xl transition-opacity duration-500" />
-                <p className="text-foreground/80 font-light leading-relaxed relative z-10 font-serif italic text-base md:text-lg mb-6">
-                  "{wish.text}"
+                <p className="text-foreground/80 font-light leading-relaxed relative z-10 font-serif italic text-base md:text-lg">
+                  "{wish}"
                 </p>
-                <div className="flex items-center gap-3 relative z-10">
-                  <div className="w-6 h-px bg-primary/40" />
-                  <p className="text-muted-foreground text-xs tracking-[0.15em] uppercase">{wish.from}</p>
-                </div>
               </motion.div>
             ))}
           </div>
