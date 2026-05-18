@@ -1,6 +1,5 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import html2canvas from "html2canvas";
 
 import photo1 from "@assets/7371D520-B2AD-482A-AA21-F5FB917935C8_1779117820791.jpg";
 import photo2 from "@assets/02F53639-9372-4671-AD0A-A62D6120D515_1779117820793.jpg";
@@ -49,24 +48,137 @@ const gallery = [
   { src: photo6, caption: "By the water" },
 ];
 
+function roundRect(
+  ctx: CanvasRenderingContext2D,
+  x: number, y: number, w: number, h: number, r: number
+) {
+  ctx.beginPath();
+  ctx.moveTo(x + r, y);
+  ctx.lineTo(x + w - r, y);
+  ctx.arcTo(x + w, y, x + w, y + r, r);
+  ctx.lineTo(x + w, y + h - r);
+  ctx.arcTo(x + w, y + h, x + w - r, y + h, r);
+  ctx.lineTo(x + r, y + h);
+  ctx.arcTo(x, y + h, x, y + h - r, r);
+  ctx.lineTo(x, y + r);
+  ctx.arcTo(x, y, x + r, y, r);
+  ctx.closePath();
+}
+
+function loadImage(src: string): Promise<HTMLImageElement> {
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    img.onload = () => resolve(img);
+    img.onerror = reject;
+    img.src = src;
+  });
+}
+
 function BirthdayCard() {
-  const cardRef = useRef<HTMLDivElement>(null);
   const [downloading, setDownloading] = useState(false);
 
   const handleDownload = async () => {
-    if (!cardRef.current) return;
     setDownloading(true);
     try {
-      const canvas = await html2canvas(cardRef.current, {
-        scale: 2,
-        useCORS: true,
-        backgroundColor: null,
-        logging: false,
-      });
+      await document.fonts.ready;
+
+      const W = 960;
+      const H = 1360;
+      const canvas = document.createElement("canvas");
+      canvas.width = W;
+      canvas.height = H;
+      const ctx = canvas.getContext("2d")!;
+
+      // ── Background gradient ──
+      const bg = ctx.createLinearGradient(0, 0, W, H);
+      bg.addColorStop(0,   "#020d1a");
+      bg.addColorStop(0.4, "#051e36");
+      bg.addColorStop(0.7, "#0a3a5c");
+      bg.addColorStop(1,   "#0d4d6e");
+      roundRect(ctx, 0, 0, W, H, 40);
+      ctx.fillStyle = bg;
+      ctx.fill();
+
+      // ── Photo ──
+      const photoH = Math.round(H * 0.52);
+      const img = await loadImage(photo1);
+      ctx.save();
+      roundRect(ctx, 0, 0, W, photoH, 0);
+      ctx.clip();
+      ctx.filter = "brightness(0.72) saturate(1.1)";
+      const scale = Math.max(W / img.naturalWidth, photoH / img.naturalHeight);
+      const dw = img.naturalWidth * scale;
+      const dh = img.naturalHeight * scale;
+      ctx.drawImage(img, (W - dw) / 2, 0, dw, dh);
+      ctx.filter = "none";
+      // fade photo bottom → dark
+      const fade = ctx.createLinearGradient(0, photoH * 0.45, 0, photoH);
+      fade.addColorStop(0, "rgba(2,13,26,0)");
+      fade.addColorStop(1, "rgba(2,13,26,1)");
+      ctx.fillStyle = fade;
+      ctx.fillRect(0, 0, W, photoH);
+      ctx.restore();
+
+      // ── Teal shimmer overlay ──
+      const sh = ctx.createRadialGradient(W * 0.25, H * 0.15, 0, W * 0.25, H * 0.15, W * 0.55);
+      sh.addColorStop(0, "rgba(13,148,136,0.14)");
+      sh.addColorStop(1, "rgba(0,0,0,0)");
+      ctx.fillStyle = sh;
+      ctx.fillRect(0, 0, W, H);
+
+      // ── Text section ──
+      const ty = photoH + 44;
+
+      // divider line
+      ctx.strokeStyle = "rgba(45,212,191,0.55)";
+      ctx.lineWidth = 1.5;
+      ctx.beginPath();
+      ctx.moveTo(W / 2 - 52, ty);
+      ctx.lineTo(W / 2 + 52, ty);
+      ctx.stroke();
+
+      // "A BIRTHDAY TRIBUTE"
+      ctx.fillStyle = "rgba(94,234,212,0.72)";
+      ctx.font = "500 20px 'Plus Jakarta Sans', sans-serif";
+      ctx.textAlign = "center";
+      ctx.fillText("A  B I R T H D A Y  T R I B U T E", W / 2, ty + 52);
+
+      // "Est"
+      ctx.fillStyle = "#f0f8ff";
+      ctx.font = "500 100px 'Playfair Display', serif";
+      ctx.fillText("Est", W / 2, ty + 168);
+
+      // "Supha"
+      ctx.fillStyle = "#2dd4bf";
+      ctx.font = "italic 100px 'Playfair Display', serif";
+      ctx.fillText("Supha", W / 2, ty + 278);
+
+      // quote
+      ctx.fillStyle = "rgba(255,255,255,0.62)";
+      ctx.font = "300 30px 'Plus Jakarta Sans', sans-serif";
+      ctx.fillText("Like the ocean, your journey is deep,", W / 2, ty + 372);
+      ctx.fillText("powerful, and unforgettable.", W / 2, ty + 414);
+
+      // bottom divider
+      ctx.strokeStyle = "rgba(45,212,191,0.38)";
+      ctx.lineWidth = 1.5;
+      ctx.beginPath();
+      ctx.moveTo(W / 2 - 52, ty + 456);
+      ctx.lineTo(W / 2 + 52, ty + 456);
+      ctx.stroke();
+
+      // "HAPPY BIRTHDAY"
+      ctx.fillStyle = "rgba(153,246,228,0.52)";
+      ctx.font = "500 20px 'Plus Jakarta Sans', sans-serif";
+      ctx.fillText("H A P P Y  B I R T H D A Y", W / 2, ty + 510);
+
+      // ── Download ──
       const link = document.createElement("a");
       link.download = "happy-birthday-est-supha.png";
       link.href = canvas.toDataURL("image/png");
       link.click();
+    } catch (err) {
+      console.error("Card generation failed:", err);
     } finally {
       setDownloading(false);
     }
@@ -76,7 +188,6 @@ function BirthdayCard() {
     <div className="flex flex-col items-center gap-10">
       {/* The card itself */}
       <div
-        ref={cardRef}
         data-testid="birthday-card"
         className="relative w-[340px] md:w-[480px] rounded-3xl overflow-hidden shadow-2xl"
         style={{
@@ -99,7 +210,6 @@ function BirthdayCard() {
             alt="Est Supha"
             className="w-full h-full object-cover object-top"
             style={{ filter: "brightness(0.75) saturate(1.1)" }}
-            crossOrigin="anonymous"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#020d1a] via-transparent to-transparent" />
         </div>
