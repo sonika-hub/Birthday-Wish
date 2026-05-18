@@ -1,6 +1,7 @@
 {
-  "buildCommand": "pnpm --filter @workspace/birthday-tribute exec vite build --config vite.config.vercel.ts",
-  "outputDirectory": "artifacts/birthday-tribute/dist",
+  "_comment": "This file applies when Vercel Root Directory is set to artifacts/birthday-tribute. For monorepo root deployment, use the root vercel.json instead.",
+  "buildCommand": "cd ../.. && pnpm install && pnpm --filter @workspace/birthday-tribute run build:vercel",
+  "outputDirectory": "dist",
   "framework": null,
   "rewrites": [
     { "source": "/(.*)", "destination": "/index.html" }
