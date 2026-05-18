@@ -1,0 +1,85 @@
+Create a modern, emotional, ocean-themed birthday wishes website for a BL actor who was formerly a national swimmer.
+
+The website should feel soft, cinematic, elegant, and meaningful — inspired by the ocean, swimming, moonlight, and calm waves.
+
+Design Style:
+
+Minimal but very eye-catching
+Soft ocean aesthetic
+Deep blue, aqua, teal, silver, and white color palette
+Smooth animations
+Clean premium UI
+Emotional fan tribute vibe
+Mobile responsive
+Modern glassmorphism elements
+Elegant typography
+
+Main Concept:
+The ocean represents his journey — from being a national swimmer to becoming a beloved BL actor.
+
+Website Layout:
+
+Hero Section
+Full-screen ocean background with slow moving waves
+Actor’s name in large elegant text
+Subtitle:
+“From racing through waves to winning hearts on screen.”
+Soft glowing birthday text animation
+Floating water ripple effects
+Moonlight reflection on water
+Smooth fade-in entrance animation
+Journey Section
+Simple horizontal or vertical timeline
+Show his transition:
+National Swimmer → Dream Chaser → BL Actor → Inspiration to Fans
+Minimal cards with glassmorphism effect
+Each card softly animates on scroll
+Birthday Wishes Section
+Floating message cards styled like ocean notes
+Soft hover glow
+Emotional and warm aesthetic
+Photo Gallery
+Clean carousel or grid layout
+Polaroid-style photos
+Ripple hover effect
+Final Message Section
+Calm night ocean background
+Emotional birthday note in center
+Floating stars and tiny glowing particles
+Ending line:
+“Like the ocean, your journey is deep, powerful, and unforgettable.”
+
+Animations:
+
+Smooth wave motion
+Water ripple effect on mouse movement
+Slow floating particles
+Elegant fade and slide transitions
+No excessive flashy animations
+
+Technical Requirements:
+
+React + Tailwind CSS
+Framer Motion animations
+Responsive on all devices
+Fast loading
+Clean component structure
+Modern minimal UI
+
+Typography:
+
+Elegant cinematic fonts
+Soft spacing and premium layout
+
+Mood:
+Dreamy, peaceful, emotional, inspiring, oceanic, heartfelt, and visually aesthetic.
+
+Avoid:
+
+Overcrowded sections
+Too many colors
+Loud neon effects
+Excessive text
+
+Goal:
+Create a simple but unforgettable birthday tribute website that emotionally reflects his journey from national swimmer to beloved BL actor while keeping the design classy and visually stunning. 🌊💙

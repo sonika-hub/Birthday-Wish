@@ -1,0 +1,26 @@
+uploads = []
+outputs = []
+
+[[generated]]
+id = "2stfk8x46T5bpGCVIWf97"
+uri = "file://artifacts/birthday-tribute/public/images/hero-ocean.png"
+type = "image"
+title = "moonlit dark ocean surface"
+
+[[generated]]
+id = "1MbqDCC2jPp8K_dSBKwUN"
+uri = "file://artifacts/birthday-tribute/public/images/swimmer.png"
+type = "image"
+title = "swimmer in dark water"
+
+[[generated]]
+id = "kVaWwiFQD2y0EYCCmar_e"
+uri = "file://artifacts/birthday-tribute/public/images/stage-lights.png"
+type = "image"
+title = "soft cinematic stage lights"
+
+[[generated]]
+id = "Z3Kp-SoEcaC3OzxR6nt9f"
+uri = "file://artifacts/birthday-tribute/public/images/drama-scene.png"
+type = "image"
+title = "romantic silhouettes by ocean"

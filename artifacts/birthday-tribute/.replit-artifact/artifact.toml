@@ -1,0 +1,31 @@
+kind = "web"
+previewPath = "/"
+title = "Birthday Tribute"
+version = "1.0.0"
+id = "artifacts/birthday-tribute"
+router = "path"
+
+[[integratedSkills]]
+name = "react-vite"
+version = "1.0.0"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 25435
+
+[services.development]
+run = "pnpm --filter @workspace/birthday-tribute run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/birthday-tribute", "run", "build" ]
+publicDir = "artifacts/birthday-tribute/dist/public"
+serve = "static"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "25435"
+BASE_PATH = "/"
