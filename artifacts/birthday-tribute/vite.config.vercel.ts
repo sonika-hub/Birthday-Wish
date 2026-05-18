@@ -17,7 +17,7 @@ export default defineConfig({
   },
   root: __dirname,
   build: {
-    outDir: path.resolve(__dirname, "dist"),
+    outDir: path.resolve(__dirname, "../../dist"),
     emptyOutDir: true,
     assetsInlineLimit: 0,
   },
