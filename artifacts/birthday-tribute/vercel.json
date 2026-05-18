@@ -1,0 +1,8 @@
+{
+  "buildCommand": "pnpm --filter @workspace/birthday-tribute exec vite build --config vite.config.vercel.ts",
+  "outputDirectory": "artifacts/birthday-tribute/dist",
+  "framework": null,
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
+}

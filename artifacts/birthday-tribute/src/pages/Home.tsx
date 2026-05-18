@@ -115,8 +115,8 @@ export default function Home() {
               A Birthday Tribute
             </h2>
             <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl font-medium text-foreground mb-8 text-glow leading-tight">
-              Ocean Deep,<br />
-              <span className="text-primary/90 italic">Star Bright</span>
+              Est<br />
+              <span className="text-primary/90 italic">Supha</span>
             </h1>
             <p className="text-muted-foreground text-lg md:text-xl font-light max-w-2xl mx-auto leading-relaxed mb-12">
               From racing through waves to winning hearts on screen. A journey of passion, endurance, and profound beauty.
@@ -308,15 +308,16 @@ export default function Home() {
           <div className="absolute -inset-20 bg-primary/10 blur-[100px] rounded-full pointer-events-none" />
           
           <h2 className="font-serif text-5xl md:text-7xl lg:text-8xl text-foreground mb-12 leading-[1.1] text-glow">
-            Deep,<br />
-            Powerful,<br />
-            <span className="text-primary italic font-light">& Unforgettable.</span>
+            Like the ocean,<br />
+            your journey is<br />
+            <span className="text-primary italic font-light">deep, powerful,</span><br />
+            <span className="text-primary italic font-light">& unforgettable.</span>
           </h2>
           
           <div className="w-24 h-px bg-primary/50 mx-auto mb-12" />
           
           <p className="text-muted-foreground text-xl md:text-2xl font-light uppercase tracking-[0.4em]">
-            Happy Birthday
+            Happy Birthday, Est Supha
           </p>
         </motion.div>
       </section>
